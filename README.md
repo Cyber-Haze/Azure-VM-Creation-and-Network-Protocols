@@ -137,26 +137,35 @@ Next lets test connectivity to public websites using ping
 </p>
 <br />
 
-<h2> Part 3]</h2>
+<h2> Part 3: Monitor SSH Traffic</h2>
 
 <p>
-<img width="1330" height="676" alt="image" src="https://github.com/user-attachments/assets/9b601d0d-ec76-45d1-9409-df865a9e332f" />
 
-</p>
+  - In Wireshark, Filter for SSH traffic, SSH uses port 22.
+      - We can search "ssh" or "tcp.port==22".
+  - From the Windows VM create a connection to the Linux Vm via Powershell.
+      - type "ssh username@<private IP address>" eg. ssh labuser@10.0.0.5.
+      - enter user password to login.
+  - Observe the SSH traffic via Wireshark.
+  - Notice in Wireshark that the username has changed and is now highlighted in green showing a successful access to the Linux VM.
+</p> 
 <br />
+<p>
+<img width="1422" height="660" alt="image" src="https://github.com/user-attachments/assets/97568313-f74b-49ae-9501-aae9df3c8de8" />
+</p>
+
+<h2> Part 3: Monitor DHCP Traffic</h2>
+
+
 
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 </p>
-
+<br />
 <p>
 <img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
 </p>
-<br />
 
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
 
 <p>
 <img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
