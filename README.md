@@ -63,7 +63,7 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 </p>
 <br />
 
-<h2>Step 2: Monitor ICMP Traffic </h2>
+<h2>Step 2: Monitor ICMP Traffic [Internet Control Message Protocol]</h2>
 
 <p>
 <img width="401" height="289" alt="image" src="https://github.com/user-attachments/assets/fc5a2061-1f10-498b-ba0a-2a24494b0dfd" />
@@ -137,102 +137,80 @@ Next lets test connectivity to public websites using ping
 </p>
 <br />
 
-<h2> Part 3: Monitor SSH Traffic</h2>
+<h2> Part 3: Monitor SSH Traffic[Secure Shell]</h2>
 
 <p>
 
-  - In Wireshark, Filter for SSH traffic, SSH uses port 22.
+  - In Wireshark, Filter for SSH traffic, SSH uses TCP port 22.
       - We can search "ssh" or "tcp.port==22".
   - From the Windows VM create a connection to the Linux Vm via Powershell.
       - type "ssh username@<private IP address>" eg. ssh labuser@10.0.0.5.
       - enter user password to login.
   - Observe the SSH traffic via Wireshark.
   - Notice in Wireshark that the username has changed and is now highlighted in green showing a successful access to the Linux VM.
+  - type "exit" to close connection and observe "red" highlight in Wireshark confirming connection has been closed
 </p> 
 <br />
 <p>
-<img width="1422" height="660" alt="image" src="https://github.com/user-attachments/assets/97568313-f74b-49ae-9501-aae9df3c8de8" />
+<img width="1366" height="572" alt="image" src="https://github.com/user-attachments/assets/99a4a64f-6f4b-49d2-a1eb-01f03460b9c6" />
 </p>
 
-<h2> Part 3: Monitor DHCP Traffic</h2>
+<h2> Part 4: Monitor DHCP Traffic [Dynamic Host Comfiguration Protocol] </h2>
 
+<p>
 
+- In Wireshark, Filter for DHCP traffic, DHCP uses UDP port 67 & 68.
+      - We can search "dhcp" or "udp.port==67||udp.port==68".
+- Normally we could run the ipconfig /renew command to request a new IP , however that creates a connection issue within the VM environment. Heres the work-around.
+    - Open Notepad as Admin
+    - type the commands (each to there own line) ipconfig /release, ipconfig /renew
+    - <img width="220" height="124" alt="image" src="https://github.com/user-attachments/assets/475a4e8d-22e7-45e5-95cb-72c4d1f4c711" />
+    - save it as dhcp.bat file in the C:\ProgramData folder
+- From Powershell, change directory to locate the ProgramData folder ( CD  c:\programdata)
+- Type the command  "./dhcp.bat" to run the file commands
+- Observe the DHCP traffic in Wireshark as the VM communicates with the DHCP server to release then renew its IP address.
+</p>
+<p>
+<img width="1496" height="481" alt="image" src="https://github.com/user-attachments/assets/9aff1286-0780-4e71-9b10-06789f4d00dc" />
 
+</p>
+
+<h2> Part 5: Monitor DNS Traffic [Domain Name Server]</h2>
+
+<p>
+
+- In Wireshark, filter for DNS traffic
+    - We can search for "dns", "udp.port==53" or "tcp.port==53"
+- To identify DNS traffic we will use the "nslookup" command to gain the IP address of known websites.
+- Observe the DNS traffic in Wireshark
+- Observe the response providing the IP address in Powershell
+
+- Google.com
+<img width="1160" height="438" alt="image" src="https://github.com/user-attachments/assets/069d7d69-b9a0-4b99-9fc0-7d64417097b9" />
+
+- Disney.com
+<img width="1234" height="446" alt="image" src="https://github.com/user-attachments/assets/f5a51ff8-c143-4096-92b8-275d550c87e8" />
+<br />
+
+<h2> Part 6: Monitor RDP Traffic[Remote Desktop Protocol]</h2>
+
+<p>
+  
+- In Wireshark, filter to capture RDP traffic
+    -We can search using "tcp.port == 3389".
+- Observe the continuous traffic movement in Wireshark. This is because the RDP records all foreground nd background processes.
+  -  This constant stream is from RDP continuous transmition of data to keep the live remote session active regardless if the user is active or not.
+    
+<img width="943" height="461" alt="image" src="https://github.com/user-attachments/assets/5ba9bfff-2f13-42d8-980f-44c0738cb0c7" />
+
+<br />
+
+<h2> In Summary </h2>
+
+<
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 </p>
-<br />
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
 
 
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<br />
 
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<br />
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Create a Resource Group to host the virtual machines
-</p>
-<br />
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Create a Resource Group to host the virtual machines
-</p>
-<br />
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Create a Resource Group to host the virtual machines
-</p>
-<br />
-
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Create a Resource Group to host the virtual machines
-</p>
-<br />
