@@ -42,6 +42,8 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 - Ensure to Select the OS disk Image for Windows 10 22h2 with a minimum of 2vcpu & 8Gb of Memory.
 - Set username and password (Take note of this, needed to log into VM)
 
+<h2>Step 2: Monitor ICMP Traffic </h2>
+
 <p> 
 <img width="384" height="95" alt="Screenshot 2025-08-19 010242" src="https://github.com/user-attachments/assets/0705c7c0-e3c3-4a71-9036-59978b9a4b77" />
 
@@ -55,7 +57,11 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 
 </p>
 <p>
-In the Networking section of creating the VM, create a new virtual network with the CIDR Notations of 10.0.0.0/16 and a sb
+  
+- In the "Networking" section of creating the VM, create a new virtual network with the CIDR Notation of 10.0.0.0/16 and a subnet of 10.0.0.0/24.
+- Review and create the Windows 10 VM
+- Repeat the VM creation steps however take note to create a Linux OS vm with Ubuntu Server 24.04 LTS. 
+- Select the same resource group, region and select the newly created virtual network in the "Networking" section to ensure both virtual system are on the same network.
 </p>
 <br />
 
