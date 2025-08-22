@@ -87,53 +87,88 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 <img width="1266" height="450" alt="image" src="https://github.com/user-attachments/assets/e6fc875c-1847-4431-a45a-6dda31fd5235" />
 
 </p>
-<br />
+<p>
 
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
+Next lets test connectivity to public websites using ping
+- From the Windows VM, run Windows Powershell and Ping google.com and youtube.com
+- Observe ping request & reply traffic via Wireshark between the Windows 10 VM and these Sites.
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<img width="1300" height="462" alt="image" src="https://github.com/user-attachments/assets/ca3c3645-fccc-4529-9385-7e3e1043e7fa" />
 
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 </p>
 <br />
 
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<h3> Configuring a Firewall [Network Security Group]</h3>
+
 
 <p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
+  
+- Initiate a continuous ping from the Windows Vm to the Linux VM using [Ping 10.0.0.5 -t]
+- From the Azure portal, access the Network Security Group (NSG) assigned to the Linux VM and deny inbound ICMP traffic
+    - Ensure to select the ICMPv4 Protocol
+    - Set action to "Deny"
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+<img width="1212" height="591" alt="Screenshot 2025-08-21 224606" src="https://github.com/user-attachments/assets/d3e90085-af49-44bb-ba5b-8d4edaadeb27" />
+<img width="382" height="593" alt="Screenshot 2025-08-21 225359" src="https://github.com/user-attachments/assets/ebda37a2-cbe1-4040-bb6d-96607f821c6f" />
 </p>
-<br />
 
 <p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+<img width="1288" height="460" alt="image" src="https://github.com/user-attachments/assets/df26899d-0c78-4f88-b9a8-c7f258a90421" />
+
 </p>
 <br />
 
 <p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
+  
+- Notice how the ICMP traffic stops due to the new firewall rule
+- Previously we would see "Request and Reply" traffic via Wireshark and Powershell. Now we are only seeing "Request" traffic. Due to the the new firewall rule the Linux VM has stopped receiving communication from the Windows VM therefore it cannot "reply".
+<h2></h2>
+<p>
+  
+- Remove the firewall rule to enable ICMP traffic flow once more.
+- Observe the ICMP traffic working again in Wireshark and on the command line.
+- Stop the continuous ping activity from the Windows 10 VM using [crtl+C].
 </p>
 <p>
+<img width="1330" height="676" alt="image" src="https://github.com/user-attachments/assets/9b601d0d-ec76-45d1-9409-df865a9e332f" />
+
+</p>
+<br />
+
+<h2> Part 3]</h2>
+
+<p>
+<img width="1330" height="676" alt="image" src="https://github.com/user-attachments/assets/9b601d0d-ec76-45d1-9409-df865a9e332f" />
+
+</p>
+<br />
+
+<p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+
+<p>
+<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
+</p>
+<br />
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+
+<p>
+<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
+</p>
+<br />
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</p>
+
+<p>
+<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
 </p>
 <br />
 
