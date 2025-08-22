@@ -13,7 +13,7 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
-- Various Command-Line Tools (Windows Powershell, Terminal, CMD)
+- Various Command-Line Tools (Windows Powershell or CMD)
 - Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
 - Wireshark (Protocol Analyzer)
 
@@ -42,12 +42,10 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 - Ensure to Select the OS disk Image for Windows 10 22h2 with a minimum of 2vcpu & 8Gb of Memory.
 - Set username and password (Take note of this, needed to log into VM)
 
-<h2>Step 2: Monitor ICMP Traffic </h2>
-
 <p> 
 <img width="384" height="95" alt="Screenshot 2025-08-19 010242" src="https://github.com/user-attachments/assets/0705c7c0-e3c3-4a71-9036-59978b9a4b77" />
 
-- Ensure you confirm this licensing prompt or else you won't be able to move forward.
+- Ensure you confirm this licensing prompt or else you won't be able to move forward.(only for windows Vm's)
 </p>
 <br />
 
@@ -65,19 +63,29 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 </p>
 <br />
 
-<p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<h2>Step 2: Monitor ICMP Traffic </h2>
 
 <p>
-<img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
+<img width="401" height="289" alt="image" src="https://github.com/user-attachments/assets/fc5a2061-1f10-498b-ba0a-2a24494b0dfd" />
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+1. Copy the Windows 10 VM public IP
+2. launch Remote Destop, Paste IP and Connect with username and password previously created
+3. Download & Install Wireshark within the Windows 10 VM
+</p>
+<br />
+<h2></h2>
+<p>
+  
+- Open Wireshark and filter for ICMP Traffic (often used in tools like ping and traceroute to check network connectivity and diagnose issues.)
+- Open Windows Powershell or CMD as administrator
+- Back In Azure,identify Linux Ubuntu VM private IP address and perform a Ping command from the Windows 10 VM ( ping 
+- Observe ping request & reply traffic via Wireshark between the two VM's
+</p>
+<p>
+<img width="1266" height="450" alt="image" src="https://github.com/user-attachments/assets/e6fc875c-1847-4431-a45a-6dda31fd5235" />
+
 </p>
 <br />
 
