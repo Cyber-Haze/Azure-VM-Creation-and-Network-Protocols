@@ -22,7 +22,7 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 - Windows 10 (21H2)
 - Ubuntu Server 20.04
 
-<h2>Step 1: Create Ressources</h2>
+<h2>Part 1: Create Ressources</h2>
 
 <p>
 <img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
@@ -63,7 +63,7 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 </p>
 <br />
 
-<h2>Step 2: Monitor ICMP Traffic [Internet Control Message Protocol]</h2>
+<h2>Part 2: Monitor ICMP Traffic [Internet Control Message Protocol]</h2>
 
 <p>
 <img width="401" height="289" alt="image" src="https://github.com/user-attachments/assets/fc5a2061-1f10-498b-ba0a-2a24494b0dfd" />
@@ -207,9 +207,8 @@ Next lets test connectivity to public websites using ping
 
 <h2> In Summary </h2>
 
-<
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+In this lab, we walked through creating two Virtual Machines ( Windows and Linux) along with a Virtual Network, we explored different types of network traffic between two Azure Virtual Machines using Wireshark to analyze protocols such as ICMP, SSH, DHCP, DNS, and RDP. We also experimented with Network Security Groups [Firewall Rules] to control the flow of ICMP traffic and observed how security settings can affect network behavior. In completing these exercises we learnt how to filter for specific traffic from there respective TCP/UDP Ports, how network traffic flows between virtual machines in Azure, how network security controls can be implemented to manage this traffic effectively along with several terminal commands.
 </p>
 
 
