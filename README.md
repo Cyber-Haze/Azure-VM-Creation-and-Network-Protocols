@@ -6,15 +6,12 @@
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
 In this tutorial, we explore network traffic between Azure Virtual Machines using Wireshark while focusing on different protocols such as ICMP, SSH, DHCP, DNS, and RDP. We also experiment with Network Security Groups (NSGs), creating a firewall rule, to control inbound and outbound traffic. This allows us to gain insight into how network traffic flows between virtual machines and how security rules can be used to restrict or permit specific types of traffic. <br />
 
-<h2>Rushane R. Townsend - Profolio Project</h2>
-<h2>Guided Photos Included</h2>
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
-- Various Command-Line Tools (Windows Powershell or CMD)
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
+- Various Command-Line Tools (Windows Powershell)
+- Various Network Protocols (ICMP, SSH, DHCP, DNS, RDP)
 - Wireshark (Protocol Analyzer)
 
 <h2>Operating Systems Used </h2>
@@ -22,14 +19,16 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 - Windows 10 (21H2)
 - Ubuntu Server 20.04
 
-<h2>Part 1: Create Ressources</h2>
+<h2></h2>
+
+<h2>Part 1: Create Resources</h2>
 
 <p>
 <img width="574" height="250" alt="Screenshot 2025-08-19 003504" src="https://github.com/user-attachments/assets/2f0f104c-6d54-4edb-a1f6-282b9c43b8b5" />
 </p>
 <p>
   
-- Create a Resource Group within your Azure Subscription to host the virtual machines. (Take note of region)
+- Firstly, create a "Resource Group" within your "Azure Subscription" to host the virtual machines. (Take note of region)
 </p>
 <br />
 
@@ -39,6 +38,9 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 <p>
 
 - Next we move to create a Virtual Machine and ensure we select the previously created resource group with its region. For this showcase we will call the VM "Win10".
+
+<img width="863" height="314" alt="image" src="https://github.com/user-attachments/assets/3d6d3940-8d25-4ac6-809e-2ada1cf0ce6b" />
+
 - Ensure to Select the OS disk Image for Windows 10 22h2 with a minimum of 2vcpu & 8Gb of Memory.
 - Set username and password (Take note of this, needed to log into VM)
 
@@ -58,10 +60,15 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
   
 - In the "Networking" section of creating the VM, create a new virtual network with the CIDR Notation of 10.0.0.0/16 and a subnet of 10.0.0.0/24.
 - Review and create the Windows 10 VM
+
+<img width="733" height="252" alt="image" src="https://github.com/user-attachments/assets/457a2eab-6dc0-455c-99d6-2b5bed5e5760" />
+
 - Repeat the VM creation steps however take note to create a Linux OS vm with Ubuntu Server 24.04 LTS. 
 - Select the same resource group, region and select the newly created virtual network in the "Networking" section to ensure both virtual system are on the same network.
 </p>
 <br />
+
+<h2></h2>
 
 <h2>Part 2: Monitor ICMP Traffic [Internet Control Message Protocol]</h2>
 
@@ -75,12 +82,14 @@ In this tutorial, we explore network traffic between Azure Virtual Machines usin
 3. Download & Install Wireshark within the Windows 10 VM
 </p>
 <br />
+
 <h2></h2>
+
 <p>
   
 - Open Wireshark and filter for ICMP Traffic (often used in tools like ping and traceroute to check network connectivity and diagnose issues.)
 - Open Windows Powershell or CMD as administrator
-- Back In Azure,identify Linux Ubuntu VM private IP address and perform a Ping command from the Windows 10 VM ( ping 
+- Back In Azure,identify Linux Ubuntu VM private IP address and perform a Ping command from the Windows 10 VM 
 - Observe ping request & reply traffic via Wireshark between the two VM's
 </p>
 <p>
@@ -98,6 +107,8 @@ Next lets test connectivity to public websites using ping
 
 </p>
 <br />
+
+<h2></h2>
 
 <h3> Configuring a Firewall [Network Security Group]</h3>
 
@@ -137,6 +148,8 @@ Next lets test connectivity to public websites using ping
 </p>
 <br />
 
+<h2></h2>
+
 <h2> Part 3: Monitor SSH Traffic[Secure Shell]</h2>
 
 <p>
@@ -155,12 +168,15 @@ Next lets test connectivity to public websites using ping
 <img width="1366" height="572" alt="image" src="https://github.com/user-attachments/assets/99a4a64f-6f4b-49d2-a1eb-01f03460b9c6" />
 </p>
 
+<h2></h2>
+
 <h2> Part 4: Monitor DHCP Traffic [Dynamic Host Comfiguration Protocol] </h2>
 
 <p>
 
 - In Wireshark, Filter for DHCP traffic, DHCP uses UDP port 67 & 68.
-      - We can search "dhcp" or "udp.port==67||udp.port==68".
+    - We can search "dhcp" or "udp.port==67||udp.port==68".
+
 - Normally we could run the ipconfig /renew command to request a new IP , however that creates a connection issue within the VM environment. Heres the work-around.
     - Open Notepad as Admin
     - type the commands (each to there own line) ipconfig /release, ipconfig /renew
@@ -174,6 +190,8 @@ Next lets test connectivity to public websites using ping
 <img width="1496" height="481" alt="image" src="https://github.com/user-attachments/assets/9aff1286-0780-4e71-9b10-06789f4d00dc" />
 
 </p>
+
+<h2></h2>
 
 <h2> Part 5: Monitor DNS Traffic [Domain Name Server]</h2>
 
@@ -192,6 +210,8 @@ Next lets test connectivity to public websites using ping
 <img width="1234" height="446" alt="image" src="https://github.com/user-attachments/assets/f5a51ff8-c143-4096-92b8-275d550c87e8" />
 <br />
 
+<h2></h2>
+
 <h2> Part 6: Monitor RDP Traffic[Remote Desktop Protocol]</h2>
 
 <p>
@@ -204,6 +224,8 @@ Next lets test connectivity to public websites using ping
 <img width="943" height="461" alt="image" src="https://github.com/user-attachments/assets/5ba9bfff-2f13-42d8-980f-44c0738cb0c7" />
 
 <br />
+
+<h2></h2>
 
 <h2> In Summary </h2>
 
